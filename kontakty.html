@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  ДЕМО-САЙТ №3: «Оселя» — ремонт квартир. Страница: КОНТАКТЫ (kontakty.html)
+  Это МНОГОСТРАНИЧНЫЙ сайт: 4 отдельных HTML-файла
+  (index, poslugy, roboty, kontakty), но ОДИН style.css и ОДИН script.js на всех.
+  Шапка и подвал на каждой странице одинаковые — меню ведёт между файлами.
+  ==========================================================
+-->
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакти та заявка на замір — «Оселя»</title>
+  <meta name="description" content="Залиште заявку на безкоштовний замір. Ремонт квартир у Києві.">
+  <!-- Иконка во вкладке браузера: эмодзи прямо в коде, без отдельного файла -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23e07a2f'/><text x='50' y='70' font-size='60' text-anchor='middle'>🏠</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================== ВЕРХНЯЯ ПОЛОСКА ===================== -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>Пн–Сб 9:00–19:00 · Безкоштовний виїзд замірника по Києву</span>
+      <a href="tel:+380501234567">+38 (050) 123-45-67</a>
+    </div>
+  </div>
+
+  <!-- ===================== ШАПКА (копия на каждой странице) ===================== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><span class="logo__mark">О</span>Оселя</a>
+
+      <!-- Ссылки ведут на ДРУГИЕ ФАЙЛЫ, а не на якоря (#) внутри страницы -->
+      <nav class="nav" id="nav">
+        <a href="index.html">Головна</a>
+        <a href="poslugy.html">Послуги і ціни</a>
+        <a href="roboty.html">Наші роботи</a>
+        <a href="kontakty.html">Контакти</a>
+      </nav>
+
+      <a href="poslugy.html#calc" class="btn">Розрахувати вартість</a>
+
+      <button class="burger" id="burger" aria-label="Відкрити меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="crumbs"><a href="index.html">Головна</a> / Контакти</div>
+      <h1>Контакти</h1>
+      <p>Залиште заявку — зателефонуємо протягом 30 хвилин і домовимось про безкоштовний замір.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact">
+      <div>
+        <h2>Як з нами зв'язатися</h2>
+        <ul class="contact__list">
+          <li><span class="contact__icon">📞</span><div><small>Телефон</small><a href="tel:+380501234567">+38 (050) 123-45-67</a></div></li>
+          <li><span class="contact__icon">✈️</span><div><small>Telegram / Viber</small><a href="#">@oselya_remont</a></div></li>
+          <li><span class="contact__icon">📍</span><div><small>Офіс</small><b>Київ, вул. Січових Стрільців, 21</b></div></li>
+          <li><span class="contact__icon">🕘</span><div><small>Графік</small><b>Пн–Сб 9:00–19:00</b></div></li>
+        </ul>
+        <div class="map">
+          <iframe src="https://www.google.com/maps?q=Київ,+вулиця+Січових+Стрільців,+21&output=embed" loading="lazy" title="Карта: офіс Оселя"></iframe>
+        </div>
+      </div>
+
+      <!-- ===================== ФОРМА ЗАЯВКИ =====================
+           Если человек пришёл из калькулятора, script.js покажет его расчёт в блоке calcBadge
+           и отправит вместе с заявкой. -->
+      <div>
+        <form class="form-box" id="requestForm" novalidate>
+          <h2 style="font-size:28px">Заявка на замір</h2>
+          <div class="calc-badge" id="calcBadge" hidden></div>
+
+          <div class="form-row">
+            <label class="field">
+              <span>Ваше ім'я *</span>
+              <input type="text" name="name" placeholder="Наприклад, Олена" required>
+              <small class="field__error">Вкажіть, будь ласка, ім'я</small>
+            </label>
+            <label class="field">
+              <span>Телефон *</span>
+              <input type="tel" name="phone" placeholder="+380 __ ___ __ __" required>
+              <small class="field__error">Введіть номер повністю, наприклад +380 50 123 45 67</small>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
+              <span>Тип робіт *</span>
+              <select name="work" id="workSelect" required>
+                <option value="">Оберіть варіант</option>
+                <option>Косметичний ремонт</option>
+                <option>Капітальний ремонт</option>
+                <option>Дизайнерський ремонт</option>
+                <option>Ванна кімната під ключ</option>
+                <option>Окремі роботи</option>
+                <option>Потрібна консультація</option>
+              </select>
+              <small class="field__error">Оберіть тип робіт</small>
+            </label>
+            <label class="field">
+              <span>Площа, м²</span>
+              <input type="number" name="area" id="areaInput" min="1" max="1000" placeholder="Наприклад, 60">
+            </label>
+          </div>
+
+          <div class="field">
+            <span>Як зручніше зв'язатися?</span>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="contact" value="Дзвінок" checked><span>Дзвінок</span></label>
+              <label class="chip"><input type="radio" name="contact" value="Telegram"><span>Telegram</span></label>
+              <label class="chip"><input type="radio" name="contact" value="Viber"><span>Viber</span></label>
+            </div>
+          </div>
+
+          <label class="field">
+            <span>Коментар</span>
+            <textarea name="comment" rows="3" placeholder="Район, коли зручно приїхати на замір, побажання"></textarea>
+          </label>
+
+          <!-- Ловушка для спам-ботов (как в барбершопе) -->
+          <input type="text" name="website" class="form__trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="calc" id="calcField">
+
+          <button type="submit" class="btn btn--full">Надіслати заявку</button>
+          <p class="form__error" id="formError" hidden>Не вдалося надіслати заявку. Зателефонуйте нам: <a href="tel:+380501234567">+38 (050) 123-45-67</a></p>
+          <p class="form__note">Натискаючи кнопку, ви погоджуєтесь на обробку персональних даних.</p>
+        </form>
+
+        <div class="success" id="success" hidden>
+          <div class="success__icon">✓</div>
+          <h2 style="font-size:28px">Дякуємо, заявку отримано!</h2>
+          <p id="successText"></p>
+          <a href="index.html" class="btn btn--ghost">На головну</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ПОДВАЛ (копия на каждой странице) ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="logo"><span class="logo__mark">О</span>Оселя</a>
+          <p>Ремонт квартир під ключ у Києві. Фіксований кошторис, договір і гарантія 3 роки.</p>
+        </div>
+        <div>
+          <h4>Сторінки</h4>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="poslugy.html">Послуги і ціни</a></li>
+            <li><a href="roboty.html">Наші роботи</a></li>
+            <li><a href="kontakty.html">Контакти</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакти</h4>
+          <ul>
+            <li><a href="tel:+380501234567">+38 (050) 123-45-67</a></li>
+            <li>Київ, вул. Січових Стрільців, 21</li>
+            <li>Пн–Сб 9:00–19:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> «Оселя». Демо-проєкт.</span>
+        <span>Сайт-концепт для портфоліо</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
