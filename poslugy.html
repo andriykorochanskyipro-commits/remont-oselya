@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  ДЕМО-САЙТ №3: «Оселя» — ремонт квартир. Страница: УСЛУГИ И ЦЕНЫ (poslugy.html)
+  Это МНОГОСТРАНИЧНЫЙ сайт: 4 отдельных HTML-файла
+  (index, poslugy, roboty, kontakty), но ОДИН style.css и ОДИН script.js на всех.
+  Шапка и подвал на каждой странице одинаковые — меню ведёт между файлами.
+  ==========================================================
+-->
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Послуги і ціни на ремонт квартир — «Оселя»</title>
+  <meta name="description" content="Ціни на ремонт квартир у Києві та онлайн-калькулятор вартості ремонту.">
+  <!-- Иконка во вкладке браузера: эмодзи прямо в коде, без отдельного файла -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23e07a2f'/><text x='50' y='70' font-size='60' text-anchor='middle'>🏠</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================== ВЕРХНЯЯ ПОЛОСКА ===================== -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>Пн–Сб 9:00–19:00 · Безкоштовний виїзд замірника по Києву</span>
+      <a href="tel:+380501234567">+38 (050) 123-45-67</a>
+    </div>
+  </div>
+
+  <!-- ===================== ШАПКА (копия на каждой странице) ===================== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><span class="logo__mark">О</span>Оселя</a>
+
+      <!-- Ссылки ведут на ДРУГИЕ ФАЙЛЫ, а не на якоря (#) внутри страницы -->
+      <nav class="nav" id="nav">
+        <a href="index.html">Головна</a>
+        <a href="poslugy.html">Послуги і ціни</a>
+        <a href="roboty.html">Наші роботи</a>
+        <a href="kontakty.html">Контакти</a>
+      </nav>
+
+      <a href="poslugy.html#calc" class="btn">Розрахувати вартість</a>
+
+      <button class="burger" id="burger" aria-label="Відкрити меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="crumbs"><a href="index.html">Головна</a> / Послуги і ціни</div>
+      <h1>Послуги і ціни</h1>
+      <p>Прозорі ціни за квадратний метр і калькулятор, який одразу покаже орієнтовну суму.</p>
+    </div>
+  </section>
+
+  <!-- ===================== ТАБЛИЦА ЦЕН ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Прайс</p>
+        <h2>Вартість робіт</h2>
+        <p>Ціни вказані за роботу без матеріалів. Матеріали закуповуємо за чеками без націнки.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="price-table">
+          <thead><tr><th>Послуга</th><th>Що входить</th><th>Ціна</th></tr></thead>
+          <tbody>
+            <tr><td>Косметичний ремонт</td><td>Шпалери або фарбування, підлога, плінтуси, двері</td><td>від 2 500 ₴/м²</td></tr>
+            <tr><td>Капітальний ремонт</td><td>Демонтаж, стяжка, штукатурка, електрика, сантехніка</td><td>від 5 500 ₴/м²</td></tr>
+            <tr><td>Дизайнерський ремонт</td><td>Дизайн-проєкт, авторський нагляд, складні рішення</td><td>від 8 500 ₴/м²</td></tr>
+            <tr><td>Ванна кімната під ключ</td><td>Плитка, сантехніка, інсталяції, вентиляція</td><td>від 65 000 ₴</td></tr>
+            <tr><td>Електрика</td><td>Заміна проводки, щиток, розетки, освітлення</td><td>від 600 ₴/м²</td></tr>
+            <tr><td>Вивіз сміття</td><td>Завантаження та вивіз будівельного сміття</td><td>від 4 000 ₴</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== КАЛЬКУЛЯТОР =====================
+       Главная новинка этого сайта. Человек двигает ползунок площади и выбирает варианты —
+       script.js СРАЗУ пересчитывает сумму (без кнопки «Посчитать»).
+       id="calc" — чтобы на калькулятор можно было сослаться: poslugy.html#calc -->
+  <section class="section section--white" id="calc">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Калькулятор</p>
+        <h2>Скільки коштуватиме ваш ремонт?</h2>
+        <p>Орієнтовна вартість робіт. Точну суму назвемо після безкоштовного заміру.</p>
+      </div>
+
+      <div class="calc">
+        <form class="calc__form" id="calcForm">
+          <div class="field">
+            <span class="field-title">Площа квартири</span>
+            <div class="range-row">
+              <input type="range" name="area" id="area" min="20" max="200" step="1" value="60">
+              <output id="areaOut">60 м²</output>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-title">Тип ремонту</span>
+            <div class="options">
+              <!-- value — внутреннее имя, data-price — цена за м², data-speed — сколько м² делаем за неделю -->
+              <label class="option"><input type="radio" name="type" value="cosmetic" data-price="2500" data-speed="20" data-label="Косметичний"><span><b>Косметичний — 2 500 ₴/м²</b><small>Оновлення без перепланування</small></span></label>
+              <label class="option"><input type="radio" name="type" value="capital" data-price="5500" data-speed="10" data-label="Капітальний" checked><span><b>Капітальний — 5 500 ₴/м²</b><small>Повний цикл робіт</small></span></label>
+              <label class="option"><input type="radio" name="type" value="design" data-price="8500" data-speed="7" data-label="Дизайнерський"><span><b>Дизайнерський — 8 500 ₴/м²</b><small>З дизайн-проєктом і наглядом</small></span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-title">Додатково</span>
+            <div class="options">
+              <!-- data-per-m2 — цена за м², data-fixed — фиксированная цена -->
+              <label class="option"><input type="checkbox" name="extra" value="demolition" data-per-m2="350" data-label="Демонтаж"><span><b>Демонтаж старого</b><small>+350 ₴/м²</small></span></label>
+              <label class="option"><input type="checkbox" name="extra" value="electric" data-per-m2="600" data-label="Нова електрика"><span><b>Нова електрика</b><small>+600 ₴/м²</small></span></label>
+              <label class="option"><input type="checkbox" name="extra" value="plumbing" data-fixed="18000" data-label="Сантехніка"><span><b>Розводка сантехніки</b><small>+18 000 ₴</small></span></label>
+              <label class="option"><input type="checkbox" name="extra" value="trash" data-fixed="4000" data-label="Вивіз сміття"><span><b>Вивіз сміття</b><small>+4 000 ₴</small></span></label>
+            </div>
+          </div>
+        </form>
+
+        <div class="calc__result">
+          <p>Орієнтовна вартість робіт</p>
+          <div class="calc__total" id="calcTotal">—</div>
+          <p class="calc__note" id="calcRange"></p>
+          <ul class="calc__rows" id="calcRows"></ul>
+          <a href="kontakty.html" class="btn btn--full" id="calcOrder">Отримати точний кошторис</a>
+          <p class="calc__note" style="margin:12px 0 0">Ваш розрахунок автоматично підставиться в заявку.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ПОДВАЛ (копия на каждой странице) ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="logo"><span class="logo__mark">О</span>Оселя</a>
+          <p>Ремонт квартир під ключ у Києві. Фіксований кошторис, договір і гарантія 3 роки.</p>
+        </div>
+        <div>
+          <h4>Сторінки</h4>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="poslugy.html">Послуги і ціни</a></li>
+            <li><a href="roboty.html">Наші роботи</a></li>
+            <li><a href="kontakty.html">Контакти</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакти</h4>
+          <ul>
+            <li><a href="tel:+380501234567">+38 (050) 123-45-67</a></li>
+            <li>Київ, вул. Січових Стрільців, 21</li>
+            <li>Пн–Сб 9:00–19:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> «Оселя». Демо-проєкт.</span>
+        <span>Сайт-концепт для портфоліо</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
