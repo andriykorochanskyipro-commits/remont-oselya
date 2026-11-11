@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  ДЕМО-САЙТ №3: «Оселя» — ремонт квартир. Страница: НАШИ РАБОТЫ (roboty.html)
+  Это МНОГОСТРАНИЧНЫЙ сайт: 4 отдельных HTML-файла
+  (index, poslugy, roboty, kontakty), но ОДИН style.css и ОДИН script.js на всех.
+  Шапка и подвал на каждой странице одинаковые — меню ведёт между файлами.
+  ==========================================================
+-->
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Наші роботи: фото до і після — «Оселя»</title>
+  <meta name="description" content="Приклади ремонтів квартир у Києві: фото до і після, площа, тип ремонту і терміни.">
+  <!-- Иконка во вкладке браузера: эмодзи прямо в коде, без отдельного файла -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23e07a2f'/><text x='50' y='70' font-size='60' text-anchor='middle'>🏠</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================== ВЕРХНЯЯ ПОЛОСКА ===================== -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>Пн–Сб 9:00–19:00 · Безкоштовний виїзд замірника по Києву</span>
+      <a href="tel:+380501234567">+38 (050) 123-45-67</a>
+    </div>
+  </div>
+
+  <!-- ===================== ШАПКА (копия на каждой странице) ===================== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><span class="logo__mark">О</span>Оселя</a>
+
+      <!-- Ссылки ведут на ДРУГИЕ ФАЙЛЫ, а не на якоря (#) внутри страницы -->
+      <nav class="nav" id="nav">
+        <a href="index.html">Головна</a>
+        <a href="poslugy.html">Послуги і ціни</a>
+        <a href="roboty.html">Наші роботи</a>
+        <a href="kontakty.html">Контакти</a>
+      </nav>
+
+      <a href="poslugy.html#calc" class="btn">Розрахувати вартість</a>
+
+      <button class="burger" id="burger" aria-label="Відкрити меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="crumbs"><a href="index.html">Головна</a> / Наші роботи</div>
+      <h1>Наші роботи</h1>
+      <p>Потягніть повзунок на фото, щоб порівняти, як було до ремонту і як стало після.</p>
+    </div>
+  </section>
+
+  <!-- ===================== ГАЛЕРЕЯ «ДО / ПОСЛЕ» =====================
+       Все слайдеры одинаковые — script.js находит каждый .ba и «оживляет» его.
+       В ДЕМО фото «до» — та же картинка, затемнённая через CSS.
+       На сайте клиента сюда ставятся настоящие фото до и после. -->
+  <section class="section">
+    <div class="container works">
+        <div class="work">
+          <div class="ba">
+            <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1000&q=75" alt="Кухня-вітальня, Оболонь — після ремонту" loading="lazy">
+            <img class="ba__before" src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1000&q=75" alt="Кухня-вітальня, Оболонь — до ремонту" loading="lazy">
+            <span class="ba__tag ba__tag--before">До</span>
+            <span class="ba__tag ba__tag--after">Після</span>
+            <div class="ba__line"></div>
+            <input type="range" min="0" max="100" value="50" aria-label="Порівняти до і після">
+          </div>
+          <div class="work__info"><h3>Кухня-вітальня, Оболонь</h3><div class="work__meta"><span>58 м²</span><span>Капітальний</span><span>7 тижнів</span></div></div>
+        </div>
+        <div class="work">
+          <div class="ba">
+            <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1000&q=75" alt="Ванна кімната, Печерськ — після ремонту" loading="lazy">
+            <img class="ba__before" src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1000&q=75" alt="Ванна кімната, Печерськ — до ремонту" loading="lazy">
+            <span class="ba__tag ba__tag--before">До</span>
+            <span class="ba__tag ba__tag--after">Після</span>
+            <div class="ba__line"></div>
+            <input type="range" min="0" max="100" value="50" aria-label="Порівняти до і після">
+          </div>
+          <div class="work__info"><h3>Ванна кімната, Печерськ</h3><div class="work__meta"><span>6 м²</span><span>Під ключ</span><span>3 тижні</span></div></div>
+        </div>
+        <div class="work">
+          <div class="ba">
+            <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1000&q=75" alt="Спальня, Позняки — після ремонту" loading="lazy">
+            <img class="ba__before" src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1000&q=75" alt="Спальня, Позняки — до ремонту" loading="lazy">
+            <span class="ba__tag ba__tag--before">До</span>
+            <span class="ba__tag ba__tag--after">Після</span>
+            <div class="ba__line"></div>
+            <input type="range" min="0" max="100" value="50" aria-label="Порівняти до і після">
+          </div>
+          <div class="work__info"><h3>Спальня, Позняки</h3><div class="work__meta"><span>16 м²</span><span>Косметичний</span><span>2 тижні</span></div></div>
+        </div>
+        <div class="work">
+          <div class="ba">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=75" alt="Вітальня, Подол — після ремонту" loading="lazy">
+            <img class="ba__before" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=75" alt="Вітальня, Подол — до ремонту" loading="lazy">
+            <span class="ba__tag ba__tag--before">До</span>
+            <span class="ba__tag ba__tag--after">Після</span>
+            <div class="ba__line"></div>
+            <input type="range" min="0" max="100" value="50" aria-label="Порівняти до і після">
+          </div>
+          <div class="work__info"><h3>Вітальня, Подол</h3><div class="work__meta"><span>34 м²</span><span>Дизайнерський</span><span>9 тижнів</span></div></div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ===================== ПРИЗЫВ К ДЕЙСТВИЮ ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2>Порахуємо ваш ремонт за 1 хвилину</h2>
+          <p>Онлайн-калькулятор покаже орієнтовну вартість і терміни. Точний кошторис — після безкоштовного заміру.</p>
+        </div>
+        <div class="cta__buttons">
+          <a href="poslugy.html#calc" class="btn">Відкрити калькулятор</a>
+          <a href="tel:+380501234567" class="btn btn--light">Зателефонувати</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ПОДВАЛ (копия на каждой странице) ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="logo"><span class="logo__mark">О</span>Оселя</a>
+          <p>Ремонт квартир під ключ у Києві. Фіксований кошторис, договір і гарантія 3 роки.</p>
+        </div>
+        <div>
+          <h4>Сторінки</h4>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="poslugy.html">Послуги і ціни</a></li>
+            <li><a href="roboty.html">Наші роботи</a></li>
+            <li><a href="kontakty.html">Контакти</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакти</h4>
+          <ul>
+            <li><a href="tel:+380501234567">+38 (050) 123-45-67</a></li>
+            <li>Київ, вул. Січових Стрільців, 21</li>
+            <li>Пн–Сб 9:00–19:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> «Оселя». Демо-проєкт.</span>
+        <span>Сайт-концепт для портфоліо</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
