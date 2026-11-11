@@ -1,0 +1,275 @@
+/*
+  ==========================================================
+  СТИЛИ: «Оселя» — ремонт квартир. ОДИН файл стилей на ВСЕ 4 страницы.
+  Это главный приём многостраничных сайтов: поменяли цвет здесь —
+  он поменялся сразу на всех страницах.
+  ==========================================================
+*/
+
+/* ---------- 1. ПЕРЕМЕННЫЕ ---------- */
+:root {
+  --bg: #f6f4f0;          /* тёплый светлый фон */
+  --white: #ffffff;
+  --dark: #1d2226;        /* графит: шапка, подвал, тёмные блоки */
+  --text: #23292e;
+  --muted: #6b7279;
+  --line: #e3dfd8;
+  --accent: #e07a2f;      /* «строительный» оранжевый */
+  --accent-dark: #c4631c;
+  --ok: #2f8f5b;
+  --error: #d64545;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(29, 34, 38, .08);
+  --font-title: 'Montserrat', Arial, sans-serif;
+  --font-text: 'Golos Text', Arial, sans-serif;
+}
+
+/* ---------- 2. БАЗА ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-text); background: var(--bg); color: var(--text); line-height: 1.6; font-size: 17px; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font-title); line-height: 1.15; font-weight: 800; }
+h1 { font-size: clamp(34px, 5.5vw, 64px); }
+h2 { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 18px; }
+h3 { font-size: 20px; margin-bottom: 8px; font-weight: 700; }
+
+.container { width: min(1180px, 92%); margin: 0 auto; }
+.section { padding: 90px 0; }
+.section--white { background: var(--white); }
+.section__head { max-width: 640px; margin-bottom: 44px; }
+.section__head p { color: var(--muted); }
+.eyebrow { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+
+/* ---------- 3. КНОПКИ ---------- */
+.btn {
+  display: inline-block; cursor: pointer; text-decoration: none;
+  padding: 15px 28px; border-radius: 10px; border: 2px solid var(--accent);
+  background: var(--accent); color: #fff;
+  font: 700 16px var(--font-text); transition: background .2s, transform .2s;
+}
+.btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); }
+.btn--ghost { background: transparent; color: var(--text); border-color: var(--text); }
+.btn--ghost:hover { background: var(--text); color: #fff; border-color: var(--text); }
+.btn--light { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.btn--light:hover { background: #fff; color: var(--dark); border-color: #fff; }
+.btn--full { width: 100%; }
+.btn:disabled { opacity: .6; cursor: wait; transform: none; }
+
+/* ---------- 4. ШАПКА (одинаковая на всех страницах) ---------- */
+.topbar { background: var(--dark); color: #c9cdd1; font-size: 14px; }
+.topbar__inner { display: flex; justify-content: space-between; gap: 20px; padding: 8px 0; flex-wrap: wrap; }
+.topbar a { text-decoration: none; color: #fff; font-weight: 600; }
+
+.header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.header__inner { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-title); font-weight: 800; font-size: 24px; }
+.logo__mark { width: 38px; height: 38px; border-radius: 10px; background: var(--accent); display: grid; place-items: center; color: #fff; font-size: 20px; }
+.nav { display: flex; gap: 6px; }
+.nav a { text-decoration: none; padding: 10px 16px; border-radius: 8px; font-weight: 600; color: var(--muted); transition: background .2s, color .2s; }
+.nav a:hover { color: var(--text); background: var(--bg); }
+/* Пункт меню текущей страницы. Класс is-active ставит script.js */
+.nav a.is-active { color: var(--accent); background: #fdf1e8; }
+.burger { display: none; }
+
+/* ---------- 5. ГЛАВНЫЙ ЭКРАН (только на главной) ---------- */
+.hero { padding: 70px 0 90px; }
+.hero__inner { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.hero h1 span { color: var(--accent); }
+.hero__lead { font-size: 19px; color: var(--muted); margin: 22px 0 32px; max-width: 540px; }
+.hero__buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero__checks { list-style: none; display: flex; gap: 22px; flex-wrap: wrap; margin-top: 30px; color: var(--muted); font-size: 15px; }
+.hero__checks li::before { content: '✓ '; color: var(--ok); font-weight: 800; }
+.hero__image { position: relative; }
+.hero__image img { border-radius: 22px; height: 520px; width: 100%; object-fit: cover; background: #d9d3c9; box-shadow: var(--shadow); }
+.hero__card {
+  position: absolute; left: -28px; bottom: 36px; background: #fff; border-radius: var(--radius);
+  padding: 18px 22px; box-shadow: var(--shadow); display: flex; gap: 14px; align-items: center;
+}
+.hero__card strong { font-family: var(--font-title); font-size: 30px; color: var(--accent); }
+.hero__card span { font-size: 14px; color: var(--muted); line-height: 1.3; }
+
+/* ---------- 6. ЦИФРЫ ---------- */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.stat { background: #fff; border-radius: var(--radius); padding: 26px; border: 1px solid var(--line); }
+.stat strong { display: block; font-family: var(--font-title); font-size: 34px; color: var(--dark); }
+.stat span { color: var(--muted); font-size: 15px; }
+
+/* ---------- 7. КАРТОЧКИ УСЛУГ ---------- */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.card {
+  background: #fff; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line);
+  display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.card img { height: 210px; width: 100%; object-fit: cover; background: #d9d3c9; }
+.card__body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.card__body p { color: var(--muted); flex: 1; }
+.card__price { margin-top: 18px; font-weight: 800; font-family: var(--font-title); }
+.card__price small { font-weight: 500; color: var(--muted); font-family: var(--font-text); }
+
+/* ---------- 8. ЭТАПЫ РАБОТЫ ---------- */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; counter-reset: step; }
+.step { position: relative; padding-top: 58px; }
+.step::before {
+  counter-increment: step; content: counter(step, decimal-leading-zero);
+  position: absolute; top: 0; left: 0; font-family: var(--font-title); font-weight: 800; font-size: 40px; color: var(--accent); opacity: .9;
+}
+.step p { color: var(--muted); font-size: 16px; }
+
+/* ---------- 9. ТЁМНАЯ ПОЛОСА С ПРИЗЫВОМ ---------- */
+.cta { background: var(--dark); color: #fff; border-radius: 24px; padding: 54px; display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; }
+.cta p { color: #b9bfc5; margin-top: 6px; }
+.cta__buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- 10. ЗАГОЛОВОК ВНУТРЕННИХ СТРАНИЦ ---------- */
+.page-hero { background: var(--dark); color: #fff; padding: 64px 0 56px; }
+.page-hero p { color: #b9bfc5; max-width: 620px; margin-top: 14px; font-size: 18px; }
+.crumbs { font-size: 14px; color: #8d959c; margin-bottom: 14px; }
+.crumbs a { color: #c9cdd1; }
+
+/* ---------- 11. ТАБЛИЦА ЦЕН ---------- */
+.price-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+.price-table th, .price-table td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--line); }
+.price-table th { background: var(--bg); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+.price-table td:last-child { font-weight: 700; white-space: nowrap; }
+.price-table tr:last-child td { border-bottom: 0; }
+.table-wrap { overflow-x: auto; } /* на телефоне таблицу можно прокрутить вбок */
+
+/* ---------- 12. КАЛЬКУЛЯТОР ---------- */
+.calc { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; }
+.calc__form, .calc__result { background: #fff; border-radius: var(--radius); padding: 32px; border: 1px solid var(--line); }
+.calc__result { background: var(--dark); color: #fff; position: sticky; top: 100px; }
+.calc__total { font-family: var(--font-title); font-size: clamp(30px, 4vw, 42px); font-weight: 800; color: var(--accent); margin: 8px 0 4px; }
+.calc__note { color: #b9bfc5; font-size: 14px; margin-bottom: 22px; }
+.calc__rows { list-style: none; margin-bottom: 24px; }
+.calc__rows li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.1); color: #d6d9dc; font-size: 15px; }
+
+.range-row { display: flex; align-items: center; gap: 16px; }
+.range-row input[type="range"] { flex: 1; accent-color: var(--accent); }
+.range-row output { min-width: 86px; text-align: right; font-weight: 800; font-family: var(--font-title); }
+
+.options { display: grid; gap: 10px; }
+.option { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 2px solid var(--line); border-radius: 10px; cursor: pointer; transition: border-color .2s; }
+.option:has(input:checked) { border-color: var(--accent); background: #fdf6f0; } /* :has — подсвечиваем выбранный вариант */
+.option input { margin-top: 5px; accent-color: var(--accent); }
+.option b { display: block; }
+.option small { color: var(--muted); }
+
+/* ---------- 13. ПОЛЯ ФОРМ (калькулятор и контакты) ---------- */
+.field { display: block; margin-bottom: 20px; }
+.field > span, .field-title { display: block; font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+.field input:not([type="range"]):not([type="radio"]):not([type="checkbox"]), .field select, .field textarea {
+  width: 100%; padding: 14px 16px; border: 2px solid var(--line); border-radius: 10px;
+  font: 16px var(--font-text); background: #fff; color: var(--text); transition: border-color .2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+.field__error { display: none; color: var(--error); font-size: 14px; margin-top: 6px; }
+.field.is-invalid input, .field.is-invalid select { border-color: var(--error); }
+.field.is-invalid .field__error { display: block; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.chips { display: flex; gap: 10px; flex-wrap: wrap; }
+.chip { cursor: pointer; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span { display: inline-block; padding: 10px 18px; border: 2px solid var(--line); border-radius: 30px; font-weight: 600; transition: all .2s; }
+.chip input:checked + span { border-color: var(--accent); background: var(--accent); color: #fff; }
+.form__trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form__error { color: var(--error); margin-top: 14px; text-align: center; }
+.form__note { color: var(--muted); font-size: 13px; margin-top: 12px; text-align: center; }
+.calc-badge { background: #fdf1e8; border: 1px dashed var(--accent); border-radius: 10px; padding: 12px 16px; font-size: 15px; margin-bottom: 20px; }
+
+/* ---------- 14. РАБОТЫ: СЛАЙДЕР «ДО / ПОСЛЕ» ---------- */
+.works { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.work { background: #fff; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+.work__info { padding: 22px 24px; }
+.work__meta { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 15px; margin-top: 6px; }
+
+/*
+  Как устроен слайдер: две одинаковые по размеру картинки лежат друг на друге.
+  Верхняя («до») обрезается справа через clip-path. Ползунок меняет переменную --pos,
+  и граница обрезки двигается.
+*/
+.ba { position: relative; height: 340px; overflow: hidden; background: #d9d3c9; --pos: 50%; user-select: none; }
+.ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ba__before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); filter: grayscale(.9) brightness(.75) contrast(.9); } /* в демо «до» — та же фото, но затемнённая; на реальном сайте будет настоящее фото «до» */
+.ba__line { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; background: #fff; transform: translateX(-50%); pointer-events: none; }
+.ba__line::after { content: '⇆'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 42px; height: 42px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-weight: 800; color: var(--dark); box-shadow: var(--shadow); }
+.ba__tag { position: absolute; top: 14px; padding: 4px 12px; border-radius: 20px; background: rgba(0,0,0,.6); color: #fff; font-size: 13px; font-weight: 600; pointer-events: none; }
+.ba__tag--before { left: 14px; }
+.ba__tag--after { right: 14px; }
+.ba input[type="range"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+
+/* ---------- 15. КОНТАКТЫ ---------- */
+.contact { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: start; }
+.contact__list { list-style: none; display: grid; gap: 18px; margin: 26px 0; }
+.contact__list li { display: flex; gap: 14px; align-items: flex-start; }
+.contact__icon { width: 44px; height: 44px; border-radius: 12px; background: #fdf1e8; display: grid; place-items: center; font-size: 20px; flex-shrink: 0; }
+.contact__list small { display: block; color: var(--muted); font-size: 14px; }
+.contact__list a { font-weight: 700; text-decoration: none; }
+.form-box, .success { background: #fff; border-radius: var(--radius); padding: 36px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.success { text-align: center; padding: 56px 36px; }
+.success__icon { width: 72px; height: 72px; margin: 0 auto 18px; border-radius: 50%; background: var(--ok); color: #fff; display: grid; place-items: center; font-size: 34px; font-weight: 800; }
+.success p { color: var(--muted); margin: 10px 0 24px; }
+.map iframe { width: 100%; height: 300px; border: 0; border-radius: var(--radius); margin-top: 10px; }
+
+/* ---------- 16. ПОДВАЛ ---------- */
+.footer { background: var(--dark); color: #b9bfc5; padding: 56px 0 28px; margin-top: 0; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.footer .logo { color: #fff; margin-bottom: 14px; }
+.footer h4 { color: #fff; font-family: var(--font-title); margin-bottom: 14px; }
+.footer ul { list-style: none; display: grid; gap: 8px; }
+.footer a { text-decoration: none; }
+.footer a:hover { color: #fff; }
+.footer__bottom { padding-top: 22px; font-size: 14px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* ==========================================================
+   17. АДАПТИВНОСТЬ
+   ========================================================== */
+@media (max-width: 980px) {
+  .hero__inner, .calc, .contact { grid-template-columns: 1fr; }
+  .hero__image img { height: 380px; }
+  .hero__card { left: 16px; }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .stats, .steps { grid-template-columns: 1fr 1fr; }
+  .works { grid-template-columns: 1fr; }
+  .calc__result { position: static; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .section { padding: 64px 0; }
+  .cards, .form-row, .footer__grid { grid-template-columns: 1fr; }
+  .stats { gap: 12px; }
+  .stat { padding: 18px; }
+  .stat strong { font-size: 26px; }
+  .steps { grid-template-columns: 1fr; }
+  .cta { padding: 34px 24px; }
+  .calc__form, .calc__result, .form-box { padding: 24px 18px; }
+  .ba { height: 260px; }
+  .contact > div:last-child { order: -1; } /* на телефоне форма заявки — первой, над контактами и картой */
+
+  /* Таблица цен на телефоне: каждая строка превращается в карточку,
+     чтобы цена не уезжала за край экрана */
+  .price-table thead { display: none; }
+  .price-table, .price-table tbody, .price-table tr, .price-table td { display: block; }
+  .price-table tr { padding: 16px 18px; border-bottom: 1px solid var(--line); }
+  .price-table tr:last-child { border-bottom: 0; }
+  .price-table td { padding: 2px 0; border: 0; }
+  .price-table td:first-child { font-weight: 700; }
+  .price-table td:nth-child(2) { color: var(--muted); font-size: 14px; }
+  .price-table td:last-child { color: var(--accent); margin-top: 4px; }
+  .topbar__inner span:first-child { display: none; }
+  .header .btn { display: none; }
+
+  .burger { display: flex; flex-direction: column; gap: 6px; background: none; border: 0; cursor: pointer; padding: 8px; }
+  .burger span { width: 26px; height: 2px; background: var(--text); }
+  .nav {
+    position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; gap: 0;
+    background: #fff; max-height: 0; overflow: hidden; transition: max-height .35s;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav a { border-radius: 0; padding: 16px 4%; border-top: 1px solid var(--line); }
+  .nav.is-open { max-height: 320px; }
+}
